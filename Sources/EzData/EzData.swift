@@ -56,33 +56,25 @@ open class EzData<T: Codable>: ObservableObject {
 		}
 	}
 	
-	open func save() throws {
+	open func save() {
 		if Self.fileURL == nil {
-			throw SaveError.fileURLNotFound
+			return
 		}
-		
-		var err: Error?
 		
 		DispatchQueue.global(qos: .background).async { [weak self] in
 			guard let items = self?.items else {
-				err = SaveError.selfOutOfScope
 				return
 			}
 			
 			guard let data = try? JSONEncoder().encode(items) else {
-				err = SaveError.encodingError
 				return
 			}
 			
 			do {
 				try data.write(to: Self.fileURL!)
 			} catch {
-				err = SaveError.writingError
+				return
 			}
-		}
-		
-		if err != nil {
-			throw err!
 		}
 	}
 }
