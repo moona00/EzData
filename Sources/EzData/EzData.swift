@@ -9,6 +9,9 @@ import Foundation
 
 @available(macOS 10.15, *)
 open class EzData<T: Codable>: ObservableObject {
+	public init() {
+	}
+	
 	private static var documentsFolder: URL? {
 		do {
 			return try FileManager.default.url(
