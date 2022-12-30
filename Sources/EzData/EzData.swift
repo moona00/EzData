@@ -29,9 +29,9 @@ open class EzData<T: Codable>: ObservableObject {
 		return documentsFolder?.appendingPathComponent("items.data") ?? nil
 	}
 	
-	@Published var items: [T] = []
+	@Published open var items: [T] = []
 	
-	func load() throws {
+	open func load() throws {
 		if Self.fileURL == nil {
 			throw LoadError.fileURLNotFound
 		}
@@ -56,7 +56,7 @@ open class EzData<T: Codable>: ObservableObject {
 		}
 	}
 	
-	func save() throws {
+	open func save() throws {
 		if Self.fileURL == nil {
 			throw SaveError.fileURLNotFound
 		}
