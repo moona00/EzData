@@ -8,7 +8,7 @@
 import Foundation
 
 @available(macOS 10.15, *)
-public class EzData<T: Codable>: ObservableObject {
+open public class EzData<T: Codable>: ObservableObject {
 	private static var documentsFolder: URL? {
 		do {
 			return try FileManager.default.url(
