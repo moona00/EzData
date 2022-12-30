@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
 	@Binding var items: [MyClass]
-	let saveAction: () -> void
+	let saveAction: () -> Void
 	@Environment(\.scenePhase) private var scenePhase
 	
 	var body: some View {
